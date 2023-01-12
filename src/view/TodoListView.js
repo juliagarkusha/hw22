@@ -26,15 +26,17 @@ class TodoListView {
             return;
         }
 
-        this.onToggleStatus(id);
-
         if(action === 'edit') {
             this.onEdit(id);
+            return;
         }
 
         if(action === 'delete') {
             this.onDelete(id);
+            return;
         }
+
+        this.onToggleStatus(id);
     }
 
     appendTo(container) {

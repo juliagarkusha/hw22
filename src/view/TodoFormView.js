@@ -1,6 +1,7 @@
 class TodoFormView {
-    static TODO_ITEM_ID = 'title';
-    
+    static TODO_ITEM_TITLE = 'title';
+    static TODO_ITEM_ID = 'id';
+
     constructor(options) {
         this.options = options;
         this.formEl = null;
@@ -28,14 +29,17 @@ class TodoFormView {
     }
 
     setFormData(todo) {
-        const todoInputEl = this.formEl.querySelector(`#${TodoFormView.TODO_ITEM_ID}`);
-        todoInputEl.value = todo.title;
+        const todoInputTitleEl = this.formEl.querySelector(`#${TodoFormView.TODO_ITEM_TITLE}`);
+        const todoInputIDEl = this.formEl.querySelector(`#${TodoFormView.TODO_ITEM_ID}`);
+        todoInputTitleEl.value = todo.title;
+        todoInputIDEl.value = todo.id;
     }
 
     initFormHtml() {
         return `
             <form>
-              <input id="${TodoFormView.TODO_ITEM_ID}" name="${TodoFormView.TODO_ITEM_ID}" type="text" placeholder="Enter todo"/>
+              <input id="${TodoFormView.TODO_ITEM_ID}" name="${TodoFormView.TODO_ITEM_ID}" type="hidden" />
+              <input id="${TodoFormView.TODO_ITEM_TITLE}" name="${TodoFormView.TODO_ITEM_TITLE}" type="text" placeholder="Enter todo"/>
               <button>Save</button>
             </form>
         `
