@@ -3,6 +3,8 @@ class TodoListView {
     static TODO_TITLE_CLASS = 'todo__title';
     static TODO_TITLE_DONE_CLASS = 'todo__title--done';
     static TODO_ACTIONS_CLASS = 'todo__actions';
+    static TODO_BTN_EDIT_CLASS = 'btn-primary';
+    static TODO_BTN_DELETE_CLASS = 'btn-danger';
 
     constructor(options) {
         const { onEdit, onDelete, onToggleStatus } = options;
@@ -86,14 +88,14 @@ class TodoListView {
     }
 
     initTodoItemHtml(todo) {
-       const done = todo.done ? 'todo__title--done' : '';
+       const done = todo.done ? TodoListView.TODO_TITLE_DONE_CLASS : '';
 
         return `
             <li class="${TodoListView.TODO_ITEM_CLASS}" data-id="${todo.id}">
                 <span class="${TodoListView.TODO_TITLE_CLASS} ${done}">${todo.title}</span>
                 <div class="${TodoListView.TODO_ACTIONS_CLASS}">
-                    <button class="btn-primary" data-action="edit" data-id="${todo.id}">Edit</button>
-                    <button class="btn-danger" data-action="delete" data-id="${todo.id}">Delete</button>
+                    <button class="${TodoListView.TODO_BTN_EDIT_CLASS}" data-action="edit" data-id="${todo.id}">Edit</button>
+                    <button class="${TodoListView.TODO_BTN_DELETE_CLASS}" data-action="delete" data-id="${todo.id}">Delete</button>
                 </div>
             </li>
         `;
