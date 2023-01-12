@@ -92,8 +92,8 @@ class TodoListView {
             <li class="${TodoListView.TODO_ITEM_CLASS}" data-id="${todo.id}">
                 <span class="${TodoListView.TODO_TITLE_CLASS} ${done}">${todo.title}</span>
                 <div class="${TodoListView.TODO_ACTIONS_CLASS}">
-                    <button class="editBtn" data-action="edit" data-id="${todo.id}">Edit</button>
-                    <button class="deleteBtn" data-action="delete" data-id="${todo.id}">Delete</button>
+                    <button class="btn-primary" data-action="edit" data-id="${todo.id}">Edit</button>
+                    <button class="btn-danger" data-action="delete" data-id="${todo.id}">Delete</button>
                 </div>
             </li>
         `;

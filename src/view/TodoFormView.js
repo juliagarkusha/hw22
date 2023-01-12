@@ -1,6 +1,7 @@
 class TodoFormView {
     static TODO_ITEM_TITLE = 'title';
     static TODO_ITEM_ID = 'id';
+    static TODO_ITEM_BTN = 'todo-form-btn';
 
     constructor(options) {
         this.options = options;
@@ -29,7 +30,7 @@ class TodoFormView {
         if(!validFormData.title) {
             return;
         }
-        
+
         this.options.onSubmit(validFormData);
         event.target.reset();
     }
@@ -46,7 +47,7 @@ class TodoFormView {
             <form>
               <input id="${TodoFormView.TODO_ITEM_ID}" name="${TodoFormView.TODO_ITEM_ID}" type="hidden" />
               <input id="${TodoFormView.TODO_ITEM_TITLE}" name="${TodoFormView.TODO_ITEM_TITLE}" type="text" placeholder="Enter todo"/>
-              <button>Save</button>
+              <button class="${TodoFormView.TODO_ITEM_BTN}">Save</button>
             </form>
         `
     }
