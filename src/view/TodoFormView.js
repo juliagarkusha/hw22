@@ -24,7 +24,13 @@ class TodoFormView {
             data.push({ name, value: String(item) })
         })
 
-        this.options.onSubmit(data.reduce((acc, field) => ({...acc, [field.name]: field.value}), {}));
+        const validFormData = data.reduce((acc, field) => ({...acc, [field.name]: field.value}), {});
+
+        if(!validFormData.title) {
+            return;
+        }
+        
+        this.options.onSubmit(validFormData);
         event.target.reset();
     }
 
