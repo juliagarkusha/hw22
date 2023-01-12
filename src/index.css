@@ -1,0 +1,12 @@
+body {
+    margin: 24px;
+}
+
+#todoList {
+    max-height: 80vh;
+    overflow: auto;
+}
+
+.title--done {
+    opacity: .5;
+}
