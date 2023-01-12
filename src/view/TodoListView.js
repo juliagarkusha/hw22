@@ -1,5 +1,7 @@
 class TodoListView {
-    static TODO_ITEM_CLASS = 'todo_item';
+    static TODO_ITEM_CLASS = 'todo__item';
+    static TODO_ITEM_TITLE_CLASS = 'todo__title';
+    static TODO_ITEM_TITLE_DONE_CLASS = 'todo__title--done';
 
     constructor(options) {
         const { onEdit, onDelete, onToggleStatus } = options;
@@ -58,10 +60,14 @@ class TodoListView {
     }
     
     replaceTodo(id, todo) {
-        const oldTodoEl = this.getTodoElById(id)
-    //    const todoHtml = this.generateTodoHtml(todo);
-//
-    //    oldTodoEl.outerHTML = todoHtml;
+       const oldTodoEl = this.getTodoElById(id);
+       const title = oldTodoEl.querySelector(`.${TodoListView.TODO_ITEM_TITLE_CLASS}`);
+        title.innerText = todo.title;
+        if (todo.done) {
+            title.classList.add(TodoListView.TODO_ITEM_TITLE_DONE_CLASS);
+        } else {
+            title.classList.remove(TodoListView.TODO_ITEM_TITLE_DONE_CLASS);
+        }
     }
 
     getTodoEl(el) {
@@ -77,13 +83,15 @@ class TodoListView {
     }
 
     initTodoItemHtml(todo) {
-       const done = todo.done ? 'done' : '';
+       const done = todo.done ? 'todo__title--done' : '';
 
         return `
             <li class="${TodoListView.TODO_ITEM_CLASS}" data-id="${todo.id}">
-                <span class="title--${done}">${todo.title}</span>
-                <button class="editBtn" data-action="edit" data-id="${todo.id}">Edit</button>
-                <button class="deleteBtn" data-action="delete" data-id="${todo.id}">Delete</button>
+                <span class="${TodoListView.TODO_ITEM_TITLE_CLASS} ${done}">${todo.title}</span>
+                <div>
+                    <button class="editBtn" data-action="edit" data-id="${todo.id}">Edit</button>
+                    <button class="deleteBtn" data-action="delete" data-id="${todo.id}">Delete</button>
+                </div>
             </li>
         `;
     }

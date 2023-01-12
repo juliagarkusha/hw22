@@ -47,10 +47,8 @@ class Controller {
     toggleStatus(id) {
         this.todoListCollection
             .toggleStatus(id)
-            .then(() => {
-                this.todoListCollection.fetch().then(list => {
-                    this.todoListView.renderList(list);
-                })
+            .then((newTodoItem) => {
+                this.todoListView.replaceTodo(id, newTodoItem);
             })
     }
 }

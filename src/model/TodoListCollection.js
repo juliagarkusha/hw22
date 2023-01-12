@@ -33,8 +33,11 @@ class TodoListCollection {
 
     toggleStatus(id) {
         const todoEl = this.get(id);
+        return TodoApi.update(id, { done: !todoEl.done }).then((todoItem) => {
+            this.updateTodoKeys(id, todoItem);
 
-        return TodoApi.update(id, { done: !todoEl.done });
+            return todoItem;
+        });
     }
 
     updateTodoKeys(id, changes) {
