@@ -1,7 +1,8 @@
 class TodoListView {
     static TODO_ITEM_CLASS = 'todo__item';
-    static TODO_ITEM_TITLE_CLASS = 'todo__title';
-    static TODO_ITEM_TITLE_DONE_CLASS = 'todo__title--done';
+    static TODO_TITLE_CLASS = 'todo__title';
+    static TODO_TITLE_DONE_CLASS = 'todo__title--done';
+    static TODO_ACTIONS_CLASS = 'todo__actions';
 
     constructor(options) {
         const { onEdit, onDelete, onToggleStatus } = options;
@@ -63,12 +64,12 @@ class TodoListView {
     
     replaceTodo(id, todo) {
        const oldTodoEl = this.getTodoElById(id);
-       const title = oldTodoEl.querySelector(`.${TodoListView.TODO_ITEM_TITLE_CLASS}`);
+       const title = oldTodoEl.querySelector(`.${TodoListView.TODO_TITLE_CLASS}`);
         title.innerText = todo.title;
         if (todo.done) {
-            title.classList.add(TodoListView.TODO_ITEM_TITLE_DONE_CLASS);
+            title.classList.add(TodoListView.TODO_TITLE_DONE_CLASS);
         } else {
-            title.classList.remove(TodoListView.TODO_ITEM_TITLE_DONE_CLASS);
+            title.classList.remove(TodoListView.TODO_TITLE_DONE_CLASS);
         }
     }
 
@@ -89,8 +90,8 @@ class TodoListView {
 
         return `
             <li class="${TodoListView.TODO_ITEM_CLASS}" data-id="${todo.id}">
-                <span class="${TodoListView.TODO_ITEM_TITLE_CLASS} ${done}">${todo.title}</span>
-                <div>
+                <span class="${TodoListView.TODO_TITLE_CLASS} ${done}">${todo.title}</span>
+                <div class="${TodoListView.TODO_ACTIONS_CLASS}">
                     <button class="editBtn" data-action="edit" data-id="${todo.id}">Edit</button>
                     <button class="deleteBtn" data-action="delete" data-id="${todo.id}">Delete</button>
                 </div>

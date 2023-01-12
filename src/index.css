@@ -1,11 +1,17 @@
+:root {
+    --todo-max-width: 700px;
+}
+
 body {
     margin: 24px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
 }
 
 form {
     display: flex;
     width: 100%;
-    max-width: 500px;
+    max-width: var(--todo-max-width);
     gap: 8px;
 }
 
@@ -13,19 +19,47 @@ form input {
     flex-grow: 1;
 }
 
+input,
+button {
+    padding: 4px 12px;
+    font-size: 1rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 #todoList {
     max-height: 80vh;
     overflow: auto;
     width: 100%;
-    max-width: 500px;
+    max-width: var(--todo-max-width);
 }
 
 .todo__item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    align-items: center;
+    /*margin-bottom: 10px;*/
+    padding: 8px 12px;
+    border-bottom: 1px solid #D8D8D8;
+}
+
+.todo__title {
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 576px) {
+    .todo__title {
+        font-size: 1rem;
+    }
 }
 
 .todo__title--done {
     opacity: .5;
+}
+
+.todo__actions {
+    flex-shrink: 0;
+    margin-left: .5rem;
 }
