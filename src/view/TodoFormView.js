@@ -35,8 +35,8 @@ class TodoFormView {
     initFormHtml() {
         return `
             <form>
-              <input id="${TodoFormView.TODO_ITEM_ID}" name="${TodoFormView.TODO_ITEM_ID}" type="text" placeholder="Введіть текст"/>
-              <button>Зберегти</button>
+              <input id="${TodoFormView.TODO_ITEM_ID}" name="${TodoFormView.TODO_ITEM_ID}" type="text" placeholder="Enter todo"/>
+              <button>Save</button>
             </form>
         `
     }
